@@ -15,7 +15,7 @@ RUN yum update -y \
     && ./configure --enable-optimizations \
     && make altinstall \
     && rm /usr/src/Python-${PYTHON_VERSION}.tgz \
-    && sed -i 's/-Xms1g/-Xms512m/g; s/-Xmx1g/-Xmx512m/g' /usr/share/elasticsearch/config/jvm.options
+    && sed -i 's/-Xms1g/-Xms128m/g; s/-Xmx1g/-Xmx128m/g' /usr/share/elasticsearch/config/jvm.options
 
 ADD requirements.txt ${SRC_DIRECTORY}
 
@@ -25,3 +25,5 @@ RUN cd ${SRC_DIRECTORY} \
 COPY . ${SRC_DIRECTORY}
 
 USER elasticsearch
+
+CMD ["ptw", "tests/functional", "--", "-s"]
