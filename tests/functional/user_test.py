@@ -4,7 +4,7 @@ import elasticsearch_dsl as dsl
 
 class User(dsl.Document):
     class Index:
-        name = 'scholarships'
+        name = 'users'
 
     name = dsl.Text(required=True)
 
