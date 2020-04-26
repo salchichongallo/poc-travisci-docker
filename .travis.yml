@@ -9,8 +9,9 @@ env:
 before_install:
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.0-amd64.deb
   - sudo dpkg -i --force-confnew elasticsearch-7.3.0-amd64.deb
-  - sudo -i service elasticsearch start
-  - until curl --silent -XGET --fail http://127.0.0.1:9200; do printf '.'; sleep 1; done
+  - sudo systemctl restart elasticsearch
+  - sudo service elasticsearch status
+#   - until curl --silent -XGET --fail http://127.0.0.1:9200; do printf '.'; sleep 1; done
 
 install:
   - pip install -r requirements.txt
