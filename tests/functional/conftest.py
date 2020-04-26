@@ -5,8 +5,8 @@ from pytest_elasticsearch import factories
 from elasticsearch_dsl.connections import add_connection
 
 
-elasticsearch_proc = factories.elasticsearch_proc()
-elasticsearch = factories.elasticsearch('elasticsearch_proc')
+elasticsearch_nooproc = factories.elasticsearch_noproc('127.0.0.1', 9200)
+elasticsearch = factories.elasticsearch('elasticsearch_nooproc')
 
 
 @pytest.fixture(autouse=True)
