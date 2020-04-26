@@ -9,3 +9,4 @@ before_install:
 
 script:
   - docker run poc-ci bash -c "pytest tests/unit"
+  - docker run poc-ci bash -c "pytest tests/functional"
